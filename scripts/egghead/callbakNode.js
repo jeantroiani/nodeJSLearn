@@ -28,14 +28,19 @@ console.log('the end');
 
 //__________Asynchronous Code_______________
 
-var rollDice = function () {                  //random number function.
+var rollDice = function () {
   return Math.floor(Math.random() * 10);
 };
 
+var secondFunction =  function (number) {
+  console.log('this is my lucky number' + number);
+}
+
 var firstFunction = function (callback) {
   var timer = setInterval(function () {
-    if (callback() !== 1) {
-      console.log('keep rolling');
+    var luckyNumber = rollDice();
+    if (luckyNumber !== 1) {
+      secondFunction(luckyNumber);
     } else {
       console.log('job done');
       clearInterval(timer);
@@ -44,8 +49,8 @@ var firstFunction = function (callback) {
   console.log('start rolling');
 };
 
-firstFunction(rollDice);
-console.log('out of function');                        //non-blocked code.
+firstFunction(secondFunction);
+console.log('out of function');
 
 
 
