@@ -40,7 +40,7 @@ var firstFunction = function (callback) {
   var timer = setInterval(function () {
     var luckyNumber = rollDice();
     if (luckyNumber !== 1) {
-      secondFunction(luckyNumber);
+      callback(luckyNumber);
     } else {
       console.log('job done');
       clearInterval(timer);
